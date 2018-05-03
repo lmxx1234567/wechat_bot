@@ -6,6 +6,7 @@ import (
 
 func main() {
 	router := gin.Default()
+	router.LoadHTMLGlob("templates/*")
 	SetRouters(router)
-	router.Run(":8000")
+	router.Run(":9876")
 }
