@@ -4,8 +4,9 @@ import "github.com/gin-gonic/gin"
 
 //GetPattern is the map of urls with GET method
 var GetPattern = map[string]gin.HandlerFunc{
-	"/ping": Ping,
-	"/":     Login,
+	"/ping":      Ping,
+	"/login":     Login,
+	"/getQRcode": GetQRcode,
 }
 
 //PostPattern is the map of urls with POST method

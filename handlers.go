@@ -17,19 +17,21 @@ func Ping(c *gin.Context) {
 
 //Login wechat
 func Login(c *gin.Context) {
+	c.File("./static/index.html")
+}
+
+//GetQRcode ...
+func GetQRcode(c *gin.Context) {
 	uuid, err := client.GetUUID()
 	if err != nil {
 		log.Println(err)
 		c.Abort()
 		return
 	}
-	str, err := client.GetQRcode(uuid)
-	if err != nil {
-		log.Println(err)
-		c.Abort()
-		return
-	}
-	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"Image": str,
+	str := client.GetQRcodeLink(uuid)
+
+	c.JSON(http.StatusOK, gin.H{
+		"msg":  "success",
+		"code": str,
 	})
 }
