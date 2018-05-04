@@ -85,3 +85,8 @@ func getBase64(img *image.Image) (string, error) {
 	str := base64.StdEncoding.EncodeToString(buffer.Bytes())
 	return str, nil
 }
+
+//GetQRcodeLink get link to QRcode by uuid
+func GetQRcodeLink(uuid string) string {
+	return "https://login.weixin.qq.com/qrcode/" + uuid
+}
